@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: rest-api-local
+    version: 0.0.1
+  output:
+    ansi:
+      enabled: always
+  redis:
+    session:
+      host: localhost
+      port: 6379
+server:
+  port: ${PORT:8001}
