@@ -12,6 +12,10 @@ import javax.validation.ConstraintViolationException;
 import static elliot.restapi.util.ResponseUtils.ApiResponse;
 import static elliot.restapi.util.ResponseUtils.error;
 
+/**
+ * @ExceptionHandler와 함께 사용하여 예외 처리를 모든 컨트롤러 전반에 걸쳐 적용(※ 적용 범위 설정 가능)
+ * 처리하고 싶은 RuntimeException 예외를 이 클래스에 등록하여 사용한다.
+ */
 @Slf4j
 @ControllerAdvice
 public class BaseExceptionHandler {

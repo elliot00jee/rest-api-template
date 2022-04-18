@@ -5,9 +5,20 @@ spring:
   output:
     ansi:
       enabled: always
-  redis:
-    session:
+  data:
+    mongodb:
       host: localhost
-      port: 6379
+      port: 27017
+      database: chatbot
+      username: chatbot
+      password: chatbot
+
+logging.level:
+  elliot.restapi: DEBUG
+  org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+  org.springframework.data.mongodb.repository: DEBUG
+
+
+
 server:
   port: ${PORT:8001}
