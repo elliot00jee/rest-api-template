@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Configuration
@@ -39,12 +40,11 @@ public class MongoDBConfig {
      * Spring Data의 Auditing 기능 사용할 때 빈으로 등록한다.
      * 엔티티에 @CreatedBy,@LastModifiedBy가 붙어있으면, 생성/수정될 때 하기 규칙대로 값이 들어간다.
      * => 요청 헤더의 "userId" 값
-     * @return
      */
     @Bean
     public AuditorAware<String> myAuditorProvider() {
             return () -> Optional.ofNullable(
-                    ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+                    ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()))
                             .getRequest()
                             .getHeader("userId"));
         }
