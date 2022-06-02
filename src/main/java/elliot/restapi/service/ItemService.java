@@ -23,7 +23,6 @@ public class ItemService {
                     .orElseGet(() -> Item.builder().itemId("ITEM0000").build())
                 .getItemId());
         itemARespository.insert(itemA);
-        log.debug("itemA 생성 {}", itemA);
         return itemA;
     }
 }
