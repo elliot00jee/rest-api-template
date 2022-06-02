@@ -16,12 +16,10 @@ public class ResponseUtils {
     @ToString
     @RequiredArgsConstructor
     public static class ApiResponse<T> {
-        private final ResultCd resultCd;
+        private final boolean success;
         private final T data;
-        private final String resultMessage;
+        private final String message;
     }
-
-    public enum ResultCd {S, BE}
 
     /**
      * 컨트롤러 단에서 정상 응답 보낼 때 호출
@@ -29,7 +27,7 @@ public class ResponseUtils {
      */
     public static <T> ResponseEntity<?> success(T response) {
         return new ResponseEntity<>(
-                new ApiResponse<>(ResultCd.S, response, null),
+                new ApiResponse<>(true, response, null),
                 HttpStatus.OK);
     }
 
@@ -48,9 +46,9 @@ public class ResponseUtils {
      * 컨트롤러 단에서 에러 응답 보낼 때 호출
      * 직접 호출하지 않고, 예외 발생 시 @ExceptionHandler에서 처리
      */
-    public static ResponseEntity<?> error(String resultMessage, HttpStatus errorStatus) {
+    public static ResponseEntity<?> error(String message, HttpStatus errorStatus) {
         return new ResponseEntity<>(
-                new ApiResponse<>(ResultCd.BE, null, resultMessage),
+                new ApiResponse<>(false, null, message),
                 errorStatus);
     }
 
