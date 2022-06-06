@@ -1,0 +1,30 @@
+= Rest API Template Document
+github.com/elliot00jee(부제)
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+[[Item-API]]
+== Item API
+
+[[Item-생성]]
+=== Item 단건 생성
+operation::create-item[snippets='http-request,http-response,request-fields']
+
+[[Item-단일-조회]]
+=== Item 단일 조회
+operation::get-item[snippets='http-request,path-parameters,http-response,response-fields-data']
+
+[[모든-Item-조회]]
+=== 모든 Item 조회
+operation::get-all-item[snippets='http-request,http-response,response-fields-data']
+
+[[Common]]
+== Common
+[[Response]]
+=== Response
+operation::common[snippets='response-fields']
+
