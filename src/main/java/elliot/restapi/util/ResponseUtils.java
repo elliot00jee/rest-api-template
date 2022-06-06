@@ -23,14 +23,7 @@ public class ResponseUtils {
 
     /**
      * 컨트롤러 단에서 정상 응답 보낼 때 호출
-     * @param response data 필드에 넣어 반환할 객체
      */
-    public static <T> ResponseEntity<?> success(T response) {
-        return new ResponseEntity<>(
-                new ApiResponse<>(true, response, null),
-                HttpStatus.OK);
-    }
-
     public static ResponseEntity<?> success() {
         return success(null);
     }
@@ -40,6 +33,16 @@ public class ResponseUtils {
         response.put(key, value);
 
         return success(response);
+    }
+
+    public static <T> ResponseEntity<?> success(T response) {
+        return success(response, null);
+    }
+
+    public static <T> ResponseEntity<?> success(T response, String message) {
+        return new ResponseEntity<>(
+                new ApiResponse<>(true, response, message),
+                HttpStatus.OK);
     }
 
     /**
